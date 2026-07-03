@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluate Applicant - Smart Lender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>🛡️</span> Smart Lender
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict">Predict Approval</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+            <div style="margin-bottom: 2rem;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">Applicant Evaluation Form</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Enter the borrower's details below. The machine learning model will compute credit risk parameters and predict whether the loan application qualifies for approval.</p>
+            </div>
+
+            <form action="/predict" method="POST">
+                <div class="form-grid">
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="Gender">Gender</label>
+                        <select id="Gender" name="Gender" required>
+                            <option value="Male" selected>Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Married -->
+                    <div class="form-group">
+                        <label for="Married">Marital Status</label>
+                        <select id="Married" name="Married" required>
+                            <option value="Yes" selected>Married (Yes)</option>
+                            <option value="No">Unmarried (No)</option>
+                        </select>
+                    </div>
+
+                    <!-- Dependents -->
+                    <div class="form-group">
+                        <label for="Dependents">Dependents</label>
+                        <select id="Dependents" name="Dependents" required>
+                            <option value="0" selected>0 Dependents</option>
+                            <option value="1">1 Dependent</option>
+                            <option value="2">2 Dependents</option>
+                            <option value="3+">3 or More Dependents (3+)</option>
+                        </select>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="form-group">
+                        <label for="Education">Education</label>
+                        <select id="Education" name="Education" required>
+                            <option value="Graduate" selected>Graduate</option>
+                            <option value="Not Graduate">Not Graduate</option>
+                        </select>
+                    </div>
+
+                    <!-- Self Employed -->
+                    <div class="form-group">
+                        <label for="Self_Employed">Self Employed</label>
+                        <select id="Self_Employed" name="Self_Employed" required>
+                            <option value="No" selected>No (Salaried)</option>
+                            <option value="Yes">Yes (Independent Business)</option>
+                        </select>
+                    </div>
+
+                    <!-- Credit History -->
+                    <div class="form-group">
+                        <label for="Credit_History">Credit History Status</label>
+                        <select id="Credit_History" name="Credit_History" required>
+                            <option value="1" selected>Clean Record / High Credit Rating (1.0)</option>
+                            <option value="0">Delinquency / Poor Rating / Defaults (0.0)</option>
+                        </select>
+                    </div>
+
+                    <!-- Applicant Income -->
+                    <div class="form-group">
+                        <label for="ApplicantIncome">Applicant Monthly Income ($)</label>
+                        <input type="number" id="ApplicantIncome" name="ApplicantIncome" min="0" placeholder="e.g. 5400" required>
+                    </div>
+
+                    <!-- Coapplicant Income -->
+                    <div class="form-group">
+                        <label for="CoapplicantIncome">Co-Applicant Monthly Income ($)</label>
+                        <input type="number" id="CoapplicantIncome" name="CoapplicantIncome" min="0" placeholder="e.g. 1500 (Enter 0 if none)" required>
+                    </div>
+
+                    <!-- Loan Amount -->
+                    <div class="form-group">
+                        <label for="LoanAmount">Requested Loan Amount (in Thousands $)</label>
+                        <input type="number" id="LoanAmount" name="LoanAmount" min="1" placeholder="e.g. 120 for $120,000" required>
+                    </div>
+
+                    <!-- Loan Amount Term -->
+                    <div class="form-group">
+                        <label for="Loan_Amount_Term">Loan Term (in Months)</label>
+                        <select id="Loan_Amount_Term" name="Loan_Amount_Term" required>
+                            <option value="360" selected>30 Years (360 Months)</option>
+                            <option value="180">15 Years (180 Months)</option>
+                            <option value="240">20 Years (240 Months)</option>
+                            <option value="120">10 Years (120 Months)</option>
+                            <option value="84">7 Years (84 Months)</option>
+                            <option value="60">5 Years (60 Months)</option>
+                        </select>
+                    </div>
+
+                    <!-- Property Area -->
+                    <div class="form-group full-width">
+                        <label for="Property_Area">Property Location Area Type</label>
+                        <select id="Property_Area" name="Property_Area" required>
+                            <option value="Rural">Rural Area</option>
+                            <option value="Semiurban" selected>Semiurban Area</option>
+                            <option value="Urban">Urban Area</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: flex-end;">
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        Calculate Eligibility <span>➔</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Lender Inc. All rights reserved. Powered by Python, Flask & XGBoost.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Smart Lender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>🛡️</span> Smart Lender
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict">Predict Approval</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+            {% if prediction == "Approved" %}
+                <div class="result-header">
+                    <span class="result-badge approved">Eligibility Check Complete</span>
+                    <h1 class="result-title approved">🎉 Loan Approved</h1>
+                    <p class="result-confidence">
+                        The AI engine predicts a high probability of successful repayment with a confidence level of <strong>{{ confidence }}%</strong>.
+                    </p>
+                </div>
+            {% else %}
+                <div class="result-header">
+                    <span class="result-badge rejected">Eligibility Check Complete</span>
+                    <h1 class="result-title rejected">❌ Loan Rejected</h1>
+                    <p class="result-confidence">
+                        The AI engine flags this application as high credit risk with a confidence level of <strong>{{ confidence }}%</strong>.
+                    </p>
+                </div>
+            {% endif %}
+
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-top: 2rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                Applicant Profile Details
+            </h3>
+
+            <div class="details-grid">
+                {% for key, val in input_details.items() %}
+                    <div class="detail-item">
+                        <div class="detail-label">{{ key }}</div>
+                        <div class="detail-value">{{ val }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center;">
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+                <a href="/predict" class="btn btn-primary">Evaluate New Applicant</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Lender Inc. All rights reserved. Powered by Python, Flask & XGBoost.</p>
+    </footer>
+</body>
+</html>
