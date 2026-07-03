@@ -1,0 +1,70 @@
++---------------------+
+|        USER         |
++---------------------+
+| PK user_id          |
+| name                |
+| email               |
+| role                |
+| created_at          |
++---------------------+
+          |
+         1|------< N
+          |
++---------------------------+
+|    APPLICANT_PROFILE      |
++---------------------------+
+| PK applicant_id           |
+| FK user_id                |
+| gender                    |
+| married                   |
+| education                 |
+| self_employed             |
+| dependents                |
+| property_area             |
++---------------------------+
+        |                  |
+      1 |                  | 1
+        |                  |
+      < N                < N
+        |                  |
++---------------------+   +---------------------------+
+|   CREDIT_HISTORY    |   |     LOAN_APPLICATION      |
++---------------------+   +---------------------------+
+| PK credit_id        |   | PK loan_id                |
+| FK applicant_id     |   | FK applicant_id           |
+| credit_score        |   | income                    |
+| credit_history      |   | coapplicant_income        |
++---------------------+   | loan_amount               |
+                           | loan_term                |
+                           | application_date         |
+                           +---------------------------+
+                                     |
+                                    1|
+                                     |
+                                   < N
+                                     |
++---------------------------+        |
+|    PREDICTION_RESULT      |--------+
++---------------------------+
+| PK prediction_id          |
+| FK loan_id                |
+| FK model_id               |
+| prediction_status         |
+| probability_score         |
+| prediction_time           |
++---------------------------+
+               ^
+               |
+             N |
+               |
+             1 |
++---------------------------+
+|          MODEL            |
++---------------------------+
+| PK model_id               |
+| model_name                |
+| algorithm                 |
+| training_accuracy         |
+| testing_accuracy          |
+| file_path                 |
++---------------------------+
