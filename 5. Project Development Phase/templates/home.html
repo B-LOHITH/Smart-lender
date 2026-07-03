@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Lender - AI-Powered Loan Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>🛡️</span> Smart Lender
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict">Predict Approval</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero glass-card">
+            <div>
+                <h1 class="hero-title">Automate Loan Decisions with <span>AI Precision</span></h1>
+                <p class="hero-subtitle">
+                    Smart Lender leverages advanced machine learning algorithms to analyze applicant financial profiles, credit history, and demographics, delivering instant, objective, and accurate loan approval decisions.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="/predict" class="btn btn-primary">
+                        Start Prediction <span>➔</span>
+                    </a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="circle-glow"></div>
+                <div class="dashboard-mockup">
+                    <div class="mockup-item" style="border-left: 3px solid var(--accent-primary);">
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">AI Decision Engine</span>
+                    </div>
+                    <div class="mockup-circle">
+                        <span>89%</span>
+                    </div>
+                    <div style="text-align: center; font-size: 0.9rem; font-weight: 500;">
+                        Target ML Accuracy
+                    </div>
+                    <div class="mockup-item" style="height: 30px; background: rgba(16, 185, 129, 0.1); justify-content: center; color: var(--success); font-size: 0.8rem; font-weight: 600;">
+                        ● System Active & Calibrated
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); padding: 0 5px;">
+                        <span>Data Preprocessed</span>
+                        <span>SMOTE Balanced</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Instant Evaluation</div>
+                <p class="feature-desc">Evaluate loan eligibility in seconds rather than days, eliminating manual bottlenecks for loan officers.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">XGBoost ML Core</div>
+                <p class="feature-desc">Powered by an optimized gradient boosting classifier trained on historical credit validation records.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📈</div>
+                <div class="feature-title">SMOTE Balanced</div>
+                <p class="feature-desc">Trained using Synthetic Minority Over-sampling to prevent historical bias and improve recall rates.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">Objective Decisions</div>
+                <p class="feature-desc">Reduce risk by making credit decisions purely based on financial metrics, assets, and credit profiles.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Lender Inc. All rights reserved. Powered by Python, Flask & XGBoost.</p>
+    </footer>
+</body>
+</html>
